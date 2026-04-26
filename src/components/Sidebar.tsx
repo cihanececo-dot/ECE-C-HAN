@@ -46,7 +46,7 @@ const Sidebar: React.FC<SidebarProps> = ({ shop, onClose }) => {
             {shop.name}
           </h2>
           
-          <div className="flex justify-center gap-4 mb-8">
+          <div className="flex justify-center gap-4 mb-6">
             <button 
               onClick={() => toggleFavorite(shop.id)}
               className={`flex items-center gap-2 px-6 py-2 rounded-full border text-xs font-bold uppercase tracking-widest transition-all ${
@@ -64,7 +64,36 @@ const Sidebar: React.FC<SidebarProps> = ({ shop, onClose }) => {
             </button>
           </div>
 
+          {shop.imageUrl && (
+            <div className="mb-8 rounded-2xl overflow-hidden border border-editorial-border shadow-lg bg-editorial-surface/30">
+              <img 
+                src={shop.imageUrl} 
+                alt={shop.name} 
+                className="w-full h-64 object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?q=80&w=1000&auto=format&fit=crop';
+                  target.onerror = null;
+                }}
+              />
+            </div>
+          )}
+
           <div className="space-y-6 text-left">
+            {shop.description && (
+              <div className="mb-10">
+                <p className="text-[10px] font-black text-editorial-accent uppercase tracking-widest mb-4 opacity-60">
+                  {language === 'TR' ? 'HİKAYESİ' : 'HISTORY'}
+                </p>
+                <div className="relative">
+                  <span className="absolute -left-2 -top-4 text-6xl text-editorial-accent/10 font-serif">"</span>
+                  <p className="text-lg font-serif italic text-gray-700 dark:text-gray-300 leading-relaxed indent-4">
+                    {shop.description}
+                  </p>
+                </div>
+              </div>
+            )}
+
             <div className="group">
               <p className="text-[10px] font-black text-editorial-accent uppercase tracking-widest mb-2 opacity-60">
                 {language === 'TR' ? 'Konum' : 'Location'}

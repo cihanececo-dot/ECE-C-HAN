@@ -11,6 +11,9 @@ export interface Shop {
   district: string;
   phone: string;
   coordinates: [number, number];
+  imageUrl?: string;
+  images?: string[];
+  description?: string;
 }
 
 export interface Comment {

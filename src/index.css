@@ -60,6 +60,45 @@
   body {
     @apply transition-colors duration-500 font-serif bg-editorial-bg text-editorial-text;
   }
+
+  .paper-texture {
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    background-repeat: repeat;
+  }
+
+  .custom-marker-wrapper {
+    @apply flex items-center justify-center;
+  }
+
+  .custom-marker-inner {
+    @apply relative flex items-center justify-center w-10 h-10 bg-white dark:bg-zinc-900 rounded-full shadow-lg border-2 border-editorial-accent/20 transition-all duration-300;
+  }
+
+  .marker-active .custom-marker-inner {
+    @apply border-editorial-accent scale-110 z-50;
+  }
+
+  .custom-marker-pin {
+    @apply absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white dark:bg-zinc-900 rotate-45 border-b-2 border-r-2 border-editorial-accent/20;
+  }
+
+  .marker-active .custom-marker-pin {
+    @apply border-editorial-accent;
+  }
+
+  @keyframes marker-pulse {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(193, 76, 50, 0.4); }
+    70% { transform: scale(1.1); opacity: 0.8; box-shadow: 0 0 0 15px rgba(193, 76, 50, 0); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(193, 76, 50, 0); }
+  }
+
+  .active-pulse {
+    animation: marker-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  .entrance-pulse {
+    animation: marker-pulse 3s cubic-bezier(0.4, 0, 0.6, 1);
+  }
 }
 
 .leaflet-container {

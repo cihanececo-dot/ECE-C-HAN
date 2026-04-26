@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import { Sun, Moon, Map as MapIcon, Home, Languages, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 
-const Navbar: React.FC<{ onPageChange: (page: 'landing' | 'map') => void; currentPage: string }> = ({ onPageChange, currentPage }) => {
+const Navbar: React.FC<{ onPageChange: (page: 'landing' | 'map' | 'stories') => void; currentPage: string }> = ({ onPageChange, currentPage }) => {
   const { theme, toggleTheme, language, setLanguage, favorites } = useApp();
 
   return (
@@ -15,21 +15,29 @@ const Navbar: React.FC<{ onPageChange: (page: 'landing' | 'map') => void; curren
         <h1 className="text-3xl font-black tracking-tighter text-editorial-accent-dark dark:text-vintage-gold">
           İSTANBUL <span className="font-light italic">Belleği</span>
         </h1>
-        <div className="h-8 w-px bg-editorial-border hidden md:block"></div>
-        <div className="hidden md:flex gap-6 text-sm font-medium uppercase tracking-widest">
-          <button 
-            onClick={() => onPageChange('map')}
-            className={`transition-colors h-full flex items-center border-b-2 py-7 ${currentPage === 'map' ? 'text-editorial-accent border-editorial-accent' : 'text-gray-500 border-transparent hover:text-editorial-accent'}`}
-          >
-            {language === 'TR' ? 'Harita' : 'Map'}
-          </button>
-          <button 
-            onClick={() => onPageChange('landing')}
-            className={`transition-colors h-full flex items-center border-b-2 py-7 ${currentPage === 'landing' ? 'text-editorial-accent border-editorial-accent' : 'text-gray-500 border-transparent hover:text-editorial-accent'}`}
-          >
-            {language === 'TR' ? 'Hakkımızda' : 'About'}
-          </button>
-        </div>
+      </div>
+
+      <div className="h-8 w-px bg-editorial-border hidden md:block mx-6"></div>
+      
+      <div className="hidden md:flex flex-1 gap-8 text-sm font-medium uppercase tracking-widest h-full">
+        <button 
+          onClick={() => onPageChange('stories')}
+          className={`transition-all h-full flex items-center border-b-2 py-7 px-2 ${currentPage === 'stories' ? 'text-editorial-accent border-editorial-accent' : 'text-gray-500 border-transparent hover:text-editorial-accent'}`}
+        >
+          {language === 'TR' ? 'Hikayeler' : 'Stories'}
+        </button>
+        <button 
+          onClick={() => onPageChange('map')}
+          className={`transition-all h-full flex items-center border-b-2 py-7 px-2 ${currentPage === 'map' ? 'text-editorial-accent border-editorial-accent' : 'text-gray-500 border-transparent hover:text-editorial-accent'}`}
+        >
+          {language === 'TR' ? 'Harita' : 'Map'}
+        </button>
+        <button 
+          onClick={() => onPageChange('landing')}
+          className={`transition-all h-full flex items-center border-b-2 py-7 px-2 ${currentPage === 'landing' ? 'text-editorial-accent border-editorial-accent' : 'text-gray-500 border-transparent hover:text-editorial-accent'}`}
+        >
+          {language === 'TR' ? 'Hakkımızda' : 'About'}
+        </button>
       </div>
 
       <div className="flex items-center gap-4">

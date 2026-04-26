@@ -9,8 +9,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Search, Filter } from 'lucide-react';
 
 // Fix Leaflet marker icons
+// @ts-ignore
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
+// @ts-ignore
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+// @ts-ignore
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -47,10 +50,21 @@ const MapPage: React.FC = () => {
   const [selectedShop, setSelectedShop] = useState<Shop | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('Hepsi');
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const createCustomIcon = (category: string, shopId: number) => {
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const createCustomIcon = (category: string, shopId: string) => {
+    const isSpecial = shopId === '14' || shopId === '41'; // Serdar Terzi or Cihan Mobilya
+    const pulseClass = (selectedShop?.id === shopId) ? 'active-pulse' : (isLoaded && isSpecial ? 'entrance-pulse' : '');
+    
     return L.divIcon({
-      html: `<div class="custom-marker-inner ${selectedShop?.id === shopId ? 'active-pulse' : ''}">
+      html: `<div class="custom-marker-inner ${pulseClass}">
                <span>${getCategoryEmoji(category)}</span>
                <div class="custom-marker-pin"></div>
              </div>`,
@@ -147,7 +161,12 @@ const MapPage: React.FC = () => {
       </aside>
 
       {/* Map Container */}
-      <section className="flex-1 relative bg-editorial-surface">
+      <motion.section 
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="flex-1 relative bg-editorial-surface"
+      >
         <MapContainer 
           center={[41.0125, 28.9734]} 
           zoom={12} 
@@ -197,7 +216,7 @@ const MapPage: React.FC = () => {
             />
           )}
         </AnimatePresence>
-      </section>
+      </motion.section>
     </div>
   );
 };
