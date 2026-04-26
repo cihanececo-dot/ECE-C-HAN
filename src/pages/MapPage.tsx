@@ -92,8 +92,8 @@ const MapPage: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row h-[calc(100vh-80px)] overflow-hidden bg-editorial-bg">
       {/* Sidebar for List and Search */}
-      <aside className="w-full md:w-80 flex flex-col border-r border-editorial-border bg-editorial-bg/40 backdrop-blur-md overflow-hidden z-20">
-        <div className="p-6 border-b border-editorial-border bg-editorial-bg/50">
+      <aside className="w-full h-[45vh] md:h-full md:w-80 flex flex-col border-b md:border-b-0 md:border-r border-editorial-border bg-editorial-bg/40 backdrop-blur-md overflow-hidden z-20">
+        <div className="p-4 md:p-6 border-b border-editorial-border bg-editorial-bg/50">
           <h2 className="text-xs font-bold uppercase tracking-widest text-editorial-accent mb-6 flex items-center gap-2">
             <Filter size={14} />
             {language === 'TR' ? 'ESNAF REHBERİ' : 'ARTISAN GUIDE'}
