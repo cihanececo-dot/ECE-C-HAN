@@ -1,0 +1,141 @@
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-editorial-bg: #fdfaf5;
+  --color-editorial-text: #2c241e;
+  --color-editorial-accent: #8b4513;
+  --color-editorial-accent-dark: #4a3728;
+  --color-editorial-border: #d4c8b8;
+  --color-editorial-surface: #efe8e0;
+  --color-editorial-card: #ffffff;
+
+  /* Keeping vintage names for compatibility but updated values */
+  --color-vintage-cream: #fdfaf5;
+  --color-vintage-green: #4a3728;
+  --color-vintage-gold: #8b4513;
+  --color-vintage-paper: #efe8e0;
+  --color-vintage-charcoal: #2c241e;
+}
+
+@layer base {
+  :root {
+    --color-editorial-bg: #fdfaf5;
+    --color-editorial-text: #1a1614;
+    --color-editorial-accent: #723c14;
+    --color-editorial-accent-dark: #3a2a1e;
+    --color-editorial-border: #c4b8a8;
+    --color-editorial-surface: #efe8e0;
+    --color-editorial-card: #ffffff;
+    
+    /* Vintage aliases */
+    --color-vintage-cream: #fdfaf5;
+    --color-vintage-green: #3a2a1e;
+    --color-vintage-gold: #723c14;
+    --color-vintage-paper: #efe8e0;
+    --color-vintage-charcoal: #1a1614;
+  }
+
+  .dark {
+    --color-editorial-bg: #12100e;
+    --color-editorial-text: #f3ede6;
+    --color-editorial-accent: #d4a373;
+    --color-editorial-accent-dark: #fdfaf5;
+    --color-editorial-border: #3d2e24;
+    --color-editorial-surface: #2c241e;
+    --color-editorial-card: #1c1815;
+
+    /* Vintage aliases for dark mode */
+    --color-vintage-cream: #12100e;
+    --color-vintage-green: #fdfaf5;
+    --color-vintage-gold: #d4a373;
+    --color-vintage-paper: #2c241e;
+    --color-vintage-charcoal: #f3ede6;
+  }
+
+  body {
+    @apply transition-colors duration-500 font-serif bg-editorial-bg text-editorial-text;
+  }
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #efe8e0 !important;
+}
+
+/* Custom Marker Styling */
+.custom-marker-wrapper {
+  @apply flex items-center justify-center;
+}
+
+.custom-marker-inner {
+  @apply w-10 h-10 rounded-full bg-editorial-card border-2 border-editorial-accent shadow-xl flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 active:scale-95;
+  animation: marker-bounce 0.5s ease-out;
+}
+
+.active-pulse {
+  border-color: var(--color-editorial-accent) !important;
+  box-shadow: 0 0 0 0 rgba(114, 60, 20, 0.4);
+  animation: pulse-marker 2s infinite !important;
+  transform: scale(1.2);
+  z-index: 100;
+}
+
+@keyframes pulse-marker {
+  0% { transform: scale(1.2); box-shadow: 0 0 0 0 rgba(114, 60, 20, 0.4); }
+  70% { transform: scale(1.25); box-shadow: 0 0 0 15px rgba(114, 60, 20, 0); }
+  100% { transform: scale(1.2); box-shadow: 0 0 0 0 rgba(114, 60, 20, 0); }
+}
+
+.dark .custom-marker-inner {
+  @apply bg-zinc-800 border-editorial-accent;
+}
+
+.custom-marker-pin {
+  @apply absolute -bottom-1 w-2 h-2 bg-editorial-accent rotate-45;
+}
+
+/* Dark mode overrides for Leaflet - Editorial approach */
+.dark .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(1.2) hue-rotate(180deg) saturate(0.5) brightness(0.9);
+}
+
+.dark .leaflet-container {
+  background: #12100e !important;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background-color: var(--color-editorial-card) !important;
+  color: var(--color-editorial-accent) !important;
+  border: none !important;
+}
+
+.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover {
+  background-color: var(--color-editorial-surface) !important;
+}
+
+.dark .leaflet-control-zoom-in, .dark .leaflet-control-zoom-out {
+  background-color: #27272a !important; /* zinc-800 */
+  color: var(--color-editorial-accent) !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
