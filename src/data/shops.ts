@@ -9,7 +9,7 @@ export const shops: Shop[] = [
     district: 'Beyoğlu', 
     phone: '0531 375 59 44', 
     coordinates: [41.0321, 28.9742],
-    imageUrl: 'https://github.com/cihanececo-dot/ECE-C-HAN/blob/main/terzi.jpeg?raw=true',
+    imageUrl: 'https://i.ibb.co/c9RR61C/terzi.jpg',
     description: '🧥 Özel Dosya: Serdar Terzi – Tarlabaşı’nın ve Beyoğlu’nun Son Şahidi\n\n"Doğduğu Sokakta Misafir Kalmak"\n\nSerdar Bey, 1950 yılında İstanbul’un kalbi Beyoğlu’nda dünyaya gözlerini açtı. Hayatının tamamını, bugün büyük bir dönüşüm kıskacında olan Tarlabaşı mahallesinde geçirdi. Onun hikâyesi, sadece bir terzilik zanaatı değil, kentin \'temizlenme\' adı altında hafızasını nasıl kaybettiğinin canlı bir belgesidir.\n\nSerdar Terzi ile yaptığımız saha röportajında, Tarlabaşı’nın ve çevresinin \'soylulaştırma\' (gentrification) süreciyle nasıl baştan aşağı değiştirildiğini bizzat ondan dinledik. Eskiden komşulukların, esnaf hukukunun ve çok kültürlü hayatın merkezi olan bu sokakların, bugün \'soylulaştırma\' adı altında sterilize edildiğini, eski sakinlerinin yavaş yavaş dışarı itildiğini gözlemledik.\n\nSerdar Bey, bu dönüşümün en acı tarafını şu sözlerle özetliyor: \'Mahalle temizleniyor diyorlar ama aslında hafızamız siliniyor.\' Artan fahiş kiralar ve değişen çevre nedeniyle gitmek istese de, hayatını adadığı bu sokakları terk edemiyor. Yüksek kiralar karşısında ayakta durmak her geçen gün zorlaşsa da, o 1950’den beri soluduğu Tarlabaşı havasını, Beyoğlu’nun o eski zarafetini dikiş makinesinin tıkırtısında yaşatmaya devam ediyor. Serdar Terzi’nin dükkânı, soylulaştırmanın sadece binaları değil, insanları da nasıl yerinden ettiğini gösteren hüzünlü bir direniş noktası.'
   },
   { 
